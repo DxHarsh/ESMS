@@ -4,35 +4,34 @@
             ESMS - Admin
         </title>
         <style>
-            #cont{
-                text-align: center;
+            body{
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: rgb(163, 163, 163);
             }
+            p{
+                font-size: 20px;
+                font-weight: bold;
+            }
+            #menu_cont{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                margin-top: 50px;
+                background-color: white;
+                height: 150px;
+                cursor: pointer;
+               }
         </style>
     </head>
     <body>
-        <div id="cont">
-            <button onclick="load()">Click To Load</button>
-            <form>
-                <input id="name" type="text">
-            </form>
-            <ul id="output">Your Data Will Display Here</ul>
+        <div id="menu_cont">
+            <p class="menu" id="stud"><a href="view_admin.html">Students</a></p>
+            <p class="menu" id="invg">Invigilator</p>
+            <p class="menu" id="man_seat">Manual Seating</p>
+            <p class="menu" id="auto_seat">Automatic Seating</p>
         </div>
 
         <script>
-            function load(){
-                fetch("http://127.0.0.1:5000/students")
-                .then(res => res.json())
-                .then(data => {
-                    const output = document.getElementById('output');
-                    output.innerHTML = "";
-
-                    data.forEach(student => {
-                        let li = document.createElement("li");
-                        li.innerText = `Roll_No: ${student.roll_no}, Name: ${student.name}, Sem: ${student.sem}`;
-                        output.appendChild(li);
-                    });
-                });
-            }
         </script>
     </body>
     

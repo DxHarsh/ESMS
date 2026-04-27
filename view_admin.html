@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>
+            ESMS - View Admin
+        </title>
+        <style>
+            #cont{
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="cont">
+            <button onclick="load()">Click To Load</button>
+            <form>
+                <input id="name" type="text">
+            </form>
+            <ul id="output">Your Data Will Display Here</ul>
+        </div>
+
+        <script>
+            function load(){
+                fetch("http://127.0.0.1:5000/students")
+                .then(res => res.json())
+                .then(data => {
+                    const output = document.getElementById('output');
+                    output.innerHTML = "";
+
+                    data.forEach(student => {
+                        let li = document.createElement("li");
+                        li.innerText = `Roll_No: ${student.roll_no}, Name: ${student.name}, Sem: ${student.sem}`;
+                        output.appendChild(li);
+                    });
+                });
+            }
+        </script>
+    </body>
+    
+</html>
+

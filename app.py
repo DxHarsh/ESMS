@@ -10,7 +10,7 @@ def get_db():
     host="localhost",
     user="root",
     password="",
-    database="exam_db_2024_27"
+    database="student_db_2024_27"
 )
 
 @app.route("/students")
